@@ -1,0 +1,50 @@
+name: telegram-forwarder-bot
+service:
+  name: bot
+  ports:
+    - port: 8080
+      http: /
+  routes:
+    - path: /
+      public: true
+  env:
+    - name: BOT_TOKEN
+      value: $BOT_TOKEN
+    - name: API_ID
+      value: $API_ID
+    - name: API_HASH
+      value: $API_HASH
+    - name: DATABASE_URL
+      value: $DATABASE_URL
+    - name: ADMIN_USER_IDS
+      value: $ADMIN_USER_IDS
+    - name: LOG_CHANNEL_ID
+      value: $LOG_CHANNEL_ID
+    - name: ERROR_LOG_CHANNEL_ID
+      value: $ERROR_LOG_CHANNEL_ID
+    - name: PREMIUM_CHANNEL_ID
+      value: $PREMIUM_CHANNEL_ID
+    - name: ENABLE_ANALYTICS
+      value: $ENABLE_ANALYTICS
+    - name: ANALYTICS_TOKEN
+      value: $ANALYTICS_TOKEN
+    - name: SHORTLINK_API
+      value: $SHORTLINK_API
+    - name: SHORTLINK_URL
+      value: $SHORTLINK_URL
+    - name: WEBHOOK_URL
+      value: $WEBHOOK_URL
+    - name: WEBHOOK_PORT
+      value: $WEBHOOK_PORT
+    - name: MAX_CONCURRENT_TASKS
+      value: $MAX_CONCURRENT_TASKS
+    - name: STRIPE_API_KEY
+      value: $STRIPE_API_KEY
+    - name: STRIPE_WEBHOOK_SECRET
+      value: $STRIPE_WEBHOOK_SECRET
+    - name: ENABLE_PREMIUM_FEATURES
+      value: $ENABLE_PREMIUM_FEATURES
+    - name: ENABLE_SHORTLINKS
+      value: $ENABLE_SHORTLINKS
+  dockerfile: Dockerfile
+
