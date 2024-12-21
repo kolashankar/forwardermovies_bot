@@ -7,7 +7,6 @@ from bot.handlers.advanced_scheduling import (
     frequency_selected, confirm_scheduling,
     SELECTING_CHANNEL, SELECTING_TIME, SELECTING_FREQUENCY, CONFIRMING
 )
-from bot.handlers.scheduler_commands import setup_scheduler_service  # Import the setup function
 
 async def main():
     # Create database tables
@@ -15,9 +14,6 @@ async def main():
 
     # Initialize and run the bot
     bot = TelegramForwarderBot()
-    
-    # Set up the scheduler service
-    setup_scheduler_service(bot)  # Call the setup function with the bot instance
     
     # Set up conversation handler for advanced scheduling
     conv_handler = ConversationHandler(
@@ -36,6 +32,8 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+
 
 
 
