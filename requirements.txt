@@ -43,6 +43,7 @@ Pillow
 plotly
 proglog
 propcache
+psycopg2-binary
 pydantic
 pydub
 PyJWT
