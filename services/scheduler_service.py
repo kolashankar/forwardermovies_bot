@@ -5,6 +5,7 @@ from services.forwarding.message_forwarder import MessageForwarder
 
 class SchedulerService:
     def __init__(self, bot):
+        self.bot = bot
         self.scheduler = BackgroundScheduler()
         self.message_forwarder = MessageForwarder(bot)
 
