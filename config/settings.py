@@ -19,7 +19,14 @@ class Settings:
     REDIS_URL = os.getenv('REDIS_URL')
 
     # Admin settings
-    ADMIN_USER_IDS = list(map(int, os.getenv('ADMIN_USER_IDS', '').split(',')))
+    ADMIN_USER_IDS = os.getenv('ADMIN_USER_IDS', '')
+
+    try:
+        # Remove any surrounding quotes and spaces, then split and convert to integers
+        ADMIN_USER_IDS = list(map(int, ADMIN_USER_IDS.replace("'", "").replace('"', "").split(',')))
+    except ValueError:
+        # If there's an error in conversion, set ADMIN_USER_IDS to an empty list
+        ADMIN_USER_IDS = []
 
     # Logging settings
     LOG_CHANNEL_ID = int(os.getenv('LOG_CHANNEL_ID', 0))
@@ -51,4 +58,3 @@ class Settings:
     ENABLE_PREMIUM_FEATURES = os.getenv('ENABLE_PREMIUM_FEATURES', 'True').lower() == 'true'
     ENABLE_ANALYTICS = os.getenv('ENABLE_ANALYTICS', 'True').lower() == 'true'
     ENABLE_SHORTLINKS = os.getenv('ENABLE_SHORTLINKS', 'True').lower() == 'true'
-

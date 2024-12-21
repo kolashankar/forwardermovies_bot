@@ -1,4 +1,4 @@
-from googletrans import Translator
+from translate import Translator
 
 class TranslationService:
     def __init__(self):

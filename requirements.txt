@@ -19,7 +19,6 @@ fastapi
 Flask
 fonttools
 frozenlist
-googletrans
 greenlet
 h11
 httpcore
@@ -68,6 +67,7 @@ stripe
 tenacity
 textblob
 threadpoolctl
+translate
 tqdm
 typing_extensions
 tzdata
