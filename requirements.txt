@@ -32,6 +32,7 @@ kiwisolver
 langdetect
 MarkupSafe
 matplotlib
+mongoengine
 moviepy
 multidict
 nltk
