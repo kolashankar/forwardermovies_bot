@@ -1,17 +1,17 @@
 from telegram import Update
 from telegram.ext import CallbackContext
-from database.models import User, Session
+from database.models import User, Session  # Ensure these are imported
 
 def start(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
-    session = Session()
+    session = Session()  # Initialize a session
     user = session.query(User).filter_by(telegram_id=user_id).first()
     if not user:
         user = User(telegram_id=user_id)
         session.add(user)
         session.commit()
     update.message.reply_text("Welcome to the Telegram Auto Forwarder Bot! Use /help to see available commands.")
-    session.close()
+    session.close()  # Close the session
 
 def features(update: Update, context: CallbackContext):
     features_text = """
