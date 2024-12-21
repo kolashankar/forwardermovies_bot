@@ -1,6 +1,7 @@
 aiohttp
 aiosignal
 anyio
+apscheduler
 async-timeout
 attrs
 certifi
