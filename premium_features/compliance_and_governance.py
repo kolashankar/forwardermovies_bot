@@ -43,7 +43,7 @@ class ComplianceAndGovernance:
         # Implement legal hold functionality for content preservation
         pass
 
-```python file="forwarder_bot/premium_features/crisis_management.py"
+python_file="forwarder_bot/premium_features/crisis_management.py"
 from utils.decorators import premium_required
 from telegram import Update
 from telegram.ext import CallbackContext

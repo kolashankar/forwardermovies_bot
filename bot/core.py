@@ -1,30 +1,30 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from config.settings import Settings
 from config.constants import Constants
 from bot.handlers import setup_handlers
 from bot.middleware.user_activity import UserActivityMiddleware
 from bot.middleware.rate_limiter import RateLimiterMiddleware
+from telegram.ext import Application
 
 class TelegramForwarderBot:
     def __init__(self):
         self.settings = Settings()
         self.constants = Constants()
-        self.updater = Updater(token=self.settings.BOT_TOKEN, use_context=True)
-        self.dispatcher = self.updater.dispatcher
+        self.application = Application.builder().token(self.settings.BOT_TOKEN).build()
 
     def setup(self):
         # Set up handlers
-        setup_handlers(self.dispatcher)
+        setup_handlers(self.application)
 
         # Set up middlewares
-        self.dispatcher.add_handler(UserActivityMiddleware())
-        self.dispatcher.add_handler(RateLimiterMiddleware(self.constants.RATE_LIMIT))
+        self.application.add_handler(UserActivityMiddleware())
+        self.application.add_handler(RateLimiterMiddleware(self.constants.RATE_LIMIT))
 
-    def run(self):
+    async def run(self):
         self.setup()
-        self.updater.start_polling()
-        self.updater.idle()
+        await self.application.initialize()
+        await self.application.start()
+        await self.application.run_polling()
 
-    def stop(self):
-        self.updater.stop()
+    async def stop(self):
+        await self.application.stop()
 

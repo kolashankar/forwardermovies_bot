@@ -44,7 +44,7 @@ class Gamification:
             return True
         return False
 
-```python file="forwarder_bot/user_engagement/feedback_collector.py"
+python_file="forwarder_bot/user_engagement/feedback_collector.py"
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler
 

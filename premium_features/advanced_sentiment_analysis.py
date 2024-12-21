@@ -43,7 +43,7 @@ class AdvancedSentimentAnalysis:
         # Implement sentiment-based action recommendations
         pass
 
-```python file="forwarder_bot/premium_features/content_trend_forecasting.py"
+python_file="forwarder_bot/premium_features/content_trend_forecasting.py"
 from utils.decorators import premium_required
 from telegram import Update
 from telegram.ext import CallbackContext
