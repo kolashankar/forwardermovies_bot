@@ -2,8 +2,11 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from models.user import User
 from services.scheduler_service import SchedulerService
+from bot.core import TelegramForwarderBot  # Import your bot class
 
-scheduler_service = SchedulerService()
+bot = TelegramForwarderBot()  # Create an instance of your bot
+
+scheduler_service = SchedulerService(bot)  # Pass the bot instance
 
 def time_scheduler(update: Update, context: CallbackContext):
     user_id = update.effective_user.id
@@ -49,4 +52,3 @@ def status(update: Update, context: CallbackContext):
     """
     
     update.message.reply_text(status_text)
-
